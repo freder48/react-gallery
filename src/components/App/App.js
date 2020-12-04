@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import GalleryList from '../GalleryList/GalleryList'
 
 class App extends Component {
 state = {
@@ -23,7 +24,7 @@ getGallery= () => {
     //the info we want is in the response
     console.log('response', response.data);
     this.setState({
-      groceryList: response.data
+      galleryList: response.data
     })
     
   })
@@ -40,7 +41,7 @@ getGallery= () => {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <p>Gallery goes here</p>
+        <GalleryList image={this.state.galleryList}/>
       </div>
     );
   }
