@@ -23,7 +23,7 @@ router.put('/like/:id', (req, res) => {
 //routed from server.js, send galleryItems from gallery.data
 router.get('/', (req, res) => {
     // Get all of the gallery items from the database
-    const sqlText = `SELECT * FROM gallery`;
+    const sqlText = `SELECT * FROM gallery ORDER BY path`;
     pool.query(sqlText)
         .then((result) => {
             res.send(result.rows);

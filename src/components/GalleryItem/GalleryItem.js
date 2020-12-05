@@ -1,6 +1,6 @@
 // imports
 import React, { Component } from 'react';
-
+import '../App/App.css';
 
 // class
 class GalleryItem extends Component{
@@ -22,6 +22,7 @@ class GalleryItem extends Component{
 
         return(
         <>
+        <div className="galleryContainer">
             <p>
                {this.state.image ? <button className="btnStyle" onClick={this.toggleImage}>
                 <img src={this.props.image.path} alt="Josie"></img> </button> :
@@ -30,14 +31,16 @@ class GalleryItem extends Component{
             }
            </p>
             
+           <p className="likesCounter">{this.props.image.likes} likes</p>
 
-            <br/>
-            <button className="heartBtn"onClick={(event)=> this.props.addLike(event, this.props.image.id)}> &#9829; </button>        
+            <p>
+            <button className="button heart"onClick={(event)=> this.props.addLike(event, this.props.image.id)}> &#9829; </button> 
+            <button className="button cross"onClick={ () => this.props.deletePhoto(this.props.image.id)}>X</button>        
+            </p>
+        </div> 
+           
+           
             
-            <p>{this.props.image.likes}</p>
-           
-           
-            <button onClick={ () => this.props.deletePhoto(this.props.image.id)}>Delete</button> 
         </> 
         ) // end return
     } // end render
