@@ -48,6 +48,7 @@ addLike = (event, id) => {
    })
 }//end addLike
 
+//POST route
 postImage = (newImage) => {
  
   console.log(newImage);
@@ -69,6 +70,17 @@ postImage = (newImage) => {
     
   }
 
+  deletePhoto = (id) => {
+    console.log('Deleting: ', id);
+    axios
+    .delete(`/gallery/${id}`)
+    .then((response) => {
+      console.log('Deleting photo');
+      this.getGallery();
+      
+    })
+}
+
 
   render() {
     return (
@@ -76,9 +88,9 @@ postImage = (newImage) => {
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
-        <GalleryForm newImage={this.state.newImage} postImage={this.postImage}/>
+        <GalleryForm postImage={this.postImage}/>
         <br/>
-        <GalleryList image={this.state.galleryList} addLike={this.addLike}/>
+        <GalleryList image={this.state.galleryList} addLike={this.addLike} deletePhoto={this.deletePhoto}/>
       </div>
     );
   }

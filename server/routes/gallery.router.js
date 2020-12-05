@@ -34,6 +34,7 @@ router.get('/', (req, res) => {
         });   
 }); // END GET Route
 
+
 //POST route
 router.post('/', (req, res) => {
     let newImage = req.body
@@ -48,6 +49,23 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+
+//DELETE route
+
+router.delete('/:id', (req, res) => {
+    let id = req.params.id; // identifys which item to delete
+    let sqlText = `DELETE FROM "gallery" WHERE id=$1;`
+    pool.query(sqlText, [id]) 
+        .then((result) => { 
+            res.sendStatus(200); 
+        })
+        .catch( (error) => {
+            console.log('Error from db...', error);
+            res.sendStatus(500);
+        })
+})
+
 
 
 module.exports = router;
