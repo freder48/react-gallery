@@ -8,4 +8,5 @@ const galleryItems = [
 
 ];
 
+//export our galleryItems array of objects to get route on app.js
 module.exports = galleryItems;

@@ -16,22 +16,22 @@ class GalleryItem extends Component{
         })
     }
 
-
-    
-
     render(){
 
         return(
         <>
-           <p>
-               {this.state.image ? <button onClick={this.toggleImage}>
+           <>
+               {this.state.image ? <button className="btnStyle" onClick={this.toggleImage}>
                 <img src={this.props.image.path} alt="Josie"></img> </button> :
-                <button onClick={this.toggleImage}>{this.props.image.description}</button>
+                <button className="btnStyle" onClick={this.toggleImage}>{this.props.image.description}</button>
             }
-           </p>
-            <p>{this.props.image.description}</p>
-            <p>{this.props.image.likes}</p>
-            <button onClick={(event)=> this.props.addLike(event, this.props.image.id)}> &#9829; </button>            
+           </>
+            {/* <p>{this.props.image.description}</p> */}
+            
+
+            <p>
+            <button className="heartBtn"onClick={(event)=> this.props.addLike(event, this.props.image.id)}> &#9829; </button>        
+            {this.props.image.likes}</p>    
         </> 
         ) // end return
     } // end render
