@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList'
+import GalleryForm from '../GalleryForm/GalleryForm'
 
 class App extends Component {
 state = {
   galleryList: [],
+ 
 }
 
 componentDidMount() {
@@ -35,7 +37,7 @@ getGallery= () => {
   })
 }//end getGallery
 
-//POST            
+//PUT           
 addLike = (event, id) => { 
   console.log('updating item', id); 
   axios
@@ -46,12 +48,35 @@ addLike = (event, id) => {
    })
 }//end addLike
 
+postImage = (newImage) => {
+ 
+  console.log(newImage);
+   axios({
+    method: 'POST',
+    url: '/gallery',
+    data: newImage
+  })
+  .then((response) => {
+    //the info we want is in the response
+    console.log('response', response);
+    this.getGallery();
+    
+  })
+  .catch((error) => {
+    alert('Something bad happening');
+    console.log('error', error);  
+  })
+    
+  }
+
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
+        <GalleryForm newImage={this.state.newImage} postImage={this.postImage}/>
         <br/>
         <GalleryList image={this.state.galleryList} addLike={this.addLike}/>
       </div>
