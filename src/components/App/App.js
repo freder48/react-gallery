@@ -34,6 +34,17 @@ getGallery= () => {
   })
 }
 
+//POST            
+addLike = (event, id) => { 
+  console.log('updating item', id); 
+  axios
+   .put(`/gallery//like/${id}`)
+   .then((response) => {
+      console.log('getting all likes');
+      this.getGallery(); 
+   })
+}
+
   render() {
     return (
       <div className="App">
@@ -41,7 +52,7 @@ getGallery= () => {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <GalleryList image={this.state.galleryList}/>
+        <GalleryList image={this.state.galleryList} addLike={this.addLike}/>
       </div>
     );
   }
