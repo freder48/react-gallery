@@ -7,14 +7,16 @@ const pool = require('../modules/pool')
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    console.log(req.params);
-    const galleryId = req.params.id;
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes += 1;
-        }
-    }
-    res.sendStatus(200);
+    const id = req.params.id;
+    let sqlText = `UPDATE gallery SET likes=(likes + 1) WHERE id=$1`
+    pool.query(sqlText, [id])
+    .then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error when changing transfer status', error)
+        res.sendStatus(500);
+    })
+
 }); // END PUT Route
 
 // GET Route
@@ -26,10 +28,26 @@ router.get('/', (req, res) => {
         .then((result) => {
             res.send(result.rows);
         })
-        .catch((error) => {
+        .catch((error) => {s
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500);
         });   
 }); // END GET Route
+
+//POST route
+router.post('/', (req, res) => {
+    let newImage = req.body
+    const sqlText = `INSERT INTO gallery (path, alt, description)
+                     VALUES ($1, $2, $3);`;
+    pool.query(sqlText, [newImage.path, newImage.alt, newImage.description])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+});
+
 
 module.exports = router;
