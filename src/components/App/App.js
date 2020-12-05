@@ -86,7 +86,8 @@ postImage = (newImage) => {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
+          <h1 className="shimmer App-title">Gallery of my life</h1>
+          
         </header>
         <GalleryForm postImage={this.postImage}/>
         <br/>

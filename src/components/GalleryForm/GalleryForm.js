@@ -1,5 +1,8 @@
 // imports
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField'
+import '../App/App.css';
+import {StylesProvider} from '@material-ui/core/styles'
 
 
 // class
@@ -40,16 +43,19 @@ class GalleryForm extends Component{
         return(
        <>
        <form onSubmit={this.handleSubmit}>
+       <StylesProvider injectFirst>
+      
+       <TextField className="input standard-basic" label="Image Path" value={this.state.newImage.path} type="url" onChange={(event) => this.handleChange(event, 'path')}></TextField> 
+    
 
-          <label>Image Path</label> 
-          <input value={this.state.newImage.path} type="url" onChange={(event) => this.handleChange(event, 'path')}></input>
+       <TextField className="input standard-basic" label="Image Alternative Text" value={this.state.newImage.alt} type="text"onChange={(event) => this.handleChange(event, 'alt')}></TextField>
+       
 
-          <label>Image Alt</label>
-          <input value={this.state.newImage.alt} type="text"onChange={(event) => this.handleChange(event, 'alt')}></input>
+        <TextField className="input standard-basic" label="Image Description" value={this.state.newImage.description} type="text" maxLength="1000"onChange={(event) => this.handleChange(event, 'description')}></TextField>
+          
+        </StylesProvider> 
+          <button className="button tick" onClick={()=> this.props.postImage(this.state.newImage)}>+</button>
 
-          <label>Image Description</label>
-          <input value={this.state.newImage.description} type="text" maxLength="1000"onChange={(event) => this.handleChange(event, 'description')}></input>
-          <button onClick={()=> this.props.postImage(this.state.newImage)}>Add</button>
        </form>
        
        </>
