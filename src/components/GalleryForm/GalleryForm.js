@@ -26,8 +26,11 @@ class GalleryForm extends Component{
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({
-            galleryList: [...this.state.galleryList, this.state.newImage]
-            
+            newImage: {
+                path: '',
+                alt: '',
+                description: ''
+            }
         })
     }
 
@@ -39,13 +42,13 @@ class GalleryForm extends Component{
        <form onSubmit={this.handleSubmit}>
 
           <label>Image Path</label> 
-          <input type="text" onChange={(event) => this.handleChange(event, 'path')}></input>
+          <input value={this.state.newImage.path} type="url" onChange={(event) => this.handleChange(event, 'path')}></input>
 
           <label>Image Alt</label>
-          <input type="text"onChange={(event) => this.handleChange(event, 'alt')}></input>
+          <input value={this.state.newImage.alt} type="text"onChange={(event) => this.handleChange(event, 'alt')}></input>
 
           <label>Image Description</label>
-          <input type="text" maxLength="1000"onChange={(event) => this.handleChange(event, 'description')}></input>
+          <input value={this.state.newImage.description} type="text" maxLength="1000"onChange={(event) => this.handleChange(event, 'description')}></input>
           <button onClick={()=> this.props.postImage(this.state.newImage)}>Add</button>
        </form>
        
