@@ -27,14 +27,16 @@ class GalleryItem extends Component{
                {this.state.image ? <button className="btnStyle" onClick={this.toggleImage}>
                 <img src={this.props.image.path} alt="Josie"></img> </button> :
                 <button className="btnStyle" onClick={this.toggleImage}>{this.props.image.description}</button>
-               
+            
             }
            </p>
             
            <p className="likesCounter">{this.props.image.likes} likes</p>
 
             <p>
-            <button className="button heart"onClick={(event)=> this.props.addLike(event, this.props.image.id)}> &#9829; </button> 
+            {/* don't need full fledged arrow function if you dont have a parameter */}
+            {/* "this" allows us to figure out what we clicked on */}
+            <button className="button heart"onClick={(event)=> this.props.addLike(this.props.image.id)}> &#9829; </button> 
             <button className="button cross"onClick={ () => this.props.deletePhoto(this.props.image.id)}>X</button>        
             </p>
         </div> 

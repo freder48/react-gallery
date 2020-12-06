@@ -7,6 +7,7 @@ class GalleryList extends Component{
     render(){
         return(
         <>
+        {/* image is my entire galleryList array, item is one object within the array */}
             {this.props.image.map((item) => 
                 <GalleryItem image={item} key={item.id} addLike={this.props.addLike} deletePhoto={this.props.deletePhoto}/>
             )}

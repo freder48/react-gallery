@@ -44,7 +44,7 @@ class GalleryForm extends Component{
        <>
        <form onSubmit={this.handleSubmit}>
        <StylesProvider injectFirst>
-      
+      {/* need the second event here because it is the changing of the letters and we need to store the event/change */}
        <TextField className="input standard-basic" label="Image Path" value={this.state.newImage.path} type="url" onChange={(event) => this.handleChange(event, 'path')}></TextField> 
     
 

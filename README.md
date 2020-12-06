@@ -9,44 +9,57 @@
 
 Duration: 10 hrs
 
-This program is designed to create to-do lists personalized by its users. Users can add a task to the list utilizing the input box. The task is generated on the DOM and stored in the database. Users can then "check" the task when it is complete to time stamp it and cross it out. Users also have the option to delete a list item when they are finished with it. 
+This program is designed to give the user an opportunity to view the author's personal photo gallery. User's can click on the photo itself to toggle between the image and the image description. One can also add their own image to the gallery by utilizing the inputs at the top of the page. All one has to do is add a valid url, insert an alternative text for the photo, and a description, then click the green check mark and it will automatically update the webpage! Users can also click the heart icon to increase the number of likes each photo has. If the X is clicked, it will delete the image from the webpage and the database. 
 
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
+## Installation for Offline Use
+
 
 ## Screen Shot
 
-![image](./server/images/Screenshot.png)
+![image](./src/img/screenshot.png)
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/)
-- Express
 - Postgres
-- Moment
+- Material UI
+- React
+- Express
+- Node
+
+## SQL Requirements
+
+- Install the required dependencies using npm
+- Create a database named "react_gallery" using Postico
+- Create the table within Postico utiling the database.sql file within application
 
 
-## Installation
+## Running the Application
 
-1. Create a database named `weekend-to-do-app`,
-2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
-3. Open up your editor of choice and run an `npm install`
-4. Run `npm run server` in your terminal
-5. Run `npm run client` in your terminal
-6. The `npm run client` command will open up a new browser tab for you!
+1. Open a terminal window and navigate to to root folder
+2. Open up your editor of choice and run an `npm install`
+3. Run `npm run server` in your terminal
+4. Run `npm run client` in your terminal
+5. The `npm run client` command will open up a new browser tab for you!
 
 ## Usage
-How does someone use this application? Tell a user story here.
 
-1. Type a task into input box and click Add Task, task will be generated on the webpage table.
-2. When the task is finished click the green check mark to cross off that item from the list and time stamp when it was completed.
-3. If you accidently clicked complete before the task was finished just re-click the check mark to re-instate task.
-4. To delete a task from the list click the red x button and confirm the safety catch alert.
+1. Input a new photo to the DOM by filling out the input fields, images will be shown on the webpage after the green checkmark is clicked.
+2. Click on the image to toggle between the image and the description.
+3. Click the heart button to add a like to the counter.
+4. To delete an image, click the red x mark.
 
 
 ## Built With
 
-jQuery, Node, Express, Postgres, JavaScript, HTML/CSS, SweetAlert/Bootstrap, Moment, Postico
+- HTML
+- CSS
+- Material UI
+- JS
+- Express
+- Node
+- React
+- Postgres
 
 ## License
 
@@ -58,6 +71,8 @@ Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped m
 For all their support and wisdom: 
 -[Kimberly Orchard](https://github.com/korchard)
 -[Joelle Kado](https://github.com/JoelleKado)
+-[Steven Maloney](https://github.com/sdeda1us)
+-[Yer Thao](https://github.com/yyerthao)
 
 ## Support
 If you have suggestions or issues, please email me at [jfredericksen12@gmail.com](www.google.com)

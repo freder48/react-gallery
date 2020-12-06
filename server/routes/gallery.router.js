@@ -7,6 +7,7 @@ const pool = require('../modules/pool')
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
+    //make the req into our variable 
     const id = req.params.id;
     let sqlText = `UPDATE gallery SET likes=(likes + 1) WHERE id=$1`
     pool.query(sqlText, [id])
@@ -19,14 +20,18 @@ router.put('/like/:id', (req, res) => {
 
 }); // END PUT Route
 
+//all of our routes are just functions
+
+
 // GET Route
 //routed from server.js, send galleryItems from gallery.data
 router.get('/', (req, res) => {
     // Get all of the gallery items from the database
     const sqlText = `SELECT * FROM gallery ORDER BY path`;
+    //pool is the database, here we are sending the query to the database, running a query similar to a command in Postico
     pool.query(sqlText)
         .then((result) => {
-            res.send(result.rows);
+            res.send(result.rows); 
         })
         .catch((error) => {s
             console.log(`Error making database query ${sqlText}`, error);
