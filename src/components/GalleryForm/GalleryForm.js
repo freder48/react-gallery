@@ -48,7 +48,7 @@ class GalleryForm extends Component{
        <TextField className="input standard-basic" label="Image Path" value={this.state.newImage.path} type="url" onChange={(event) => this.handleChange(event, 'path')}></TextField> 
     
 
-       <TextField className="input standard-basic" label="Image Alternative Text" value={this.state.newImage.alt} type="text"onChange={(event) => this.handleChange(event, 'alt')}></TextField>
+       <TextField className="input standard-basic" label="Image Title" value={this.state.newImage.alt} type="text"onChange={(event) => this.handleChange(event, 'alt')}></TextField>
        
 
         <TextField className="input standard-basic" label="Image Description" value={this.state.newImage.description} type="text" maxLength="1000"onChange={(event) => this.handleChange(event, 'description')}></TextField>

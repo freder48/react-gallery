@@ -18,12 +18,11 @@ router.put('/like/:id', (req, res) => {
         res.sendStatus(500);
     })
 
-}); // END PUT Route
+}); // End PUT Route
 
 //all of our routes are just functions
 
-
-// GET Route
+// GET route
 //routed from server.js, send galleryItems from gallery.data
 router.get('/', (req, res) => {
     // Get all of the gallery items from the database
@@ -53,11 +52,10 @@ router.post('/', (req, res) => {
             console.log(`Error making database query ${sqlText}`, error);
             res.sendStatus(500);
         });
-});
+});//end post route
 
 
 //DELETE route
-
 router.delete('/:id', (req, res) => {
     let id = req.params.id; // identifys which item to delete
     let sqlText = `DELETE FROM "gallery" WHERE id=$1;`
@@ -69,7 +67,7 @@ router.delete('/:id', (req, res) => {
             console.log('Error from db...', error);
             res.sendStatus(500);
         })
-})
+}); //end delete route
 
 
 

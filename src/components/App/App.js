@@ -20,91 +20,88 @@ state = {
 componentDidMount() {
   console.log('Component did mount');
   this.getGallery();
-  
+
 }
 
-//start getGallery
-getGallery= () => {
+//GET
+getGallery = () => {
   axios({
-    method: 'GET', 
-    //takes us to /gallery on server.js
-    url: '/gallery'
-  })
-  .then((response) => {
-    //the info we want is in the response
-    console.log('response', response.data);
-    this.setState({
-      //result.rows becomes the response.data
-      //set the gallery array from gallery.data.js (response.data) to galleryList array in state
-      galleryList: response.data //now galleryList contains our information from the database
+      method: 'GET',
+      //takes us to /gallery on server.js
+      url: '/gallery'
     })
-  })
-  .catch((error) => {
-    alert('Something bad happening in GET');
-    console.log('error', error);  
-  })
-}//end getGallery
+    .then((response) => {
+      //the info we want is in the response
+      console.log('response', response.data);
+      this.setState({
+        //result.rows becomes the response.data
+        //set the gallery array from gallery.data.js (response.data) to galleryList array in state
+        galleryList: response.data //now galleryList contains our information from the database
+      })
+    })
+    .catch((error) => {
+      alert('Something bad happening in GET');
+      console.log('error', error);
+    })
+} //end getGallery
 
 //PUT           
-addLike = (id) => { 
-  console.log('updating item', id); 
+addLike = (id) => {
+  console.log('updating item', id);
   axios
-  // communicating with our server, axios is a set of commands for express (middleware: communication code)
-   .put(`/gallery//like/${id}`)
-   .then((response) => {
+    // communicating with our server, axios is a set of commands for express (middleware: communication code)
+    .put(`/gallery//like/${id}`)
+    .then((response) => {
       console.log('getting all likes');
-      this.getGallery(); 
-   })
-}//end addLike
+      this.getGallery();
+    })
+} //end addLike
 
-//POST route
+//POST 
 postImage = (newImage) => {
- 
   console.log(newImage);
-   axios({
-    method: 'POST',
-    url: '/gallery',
-    data: newImage
-  })
-  .then((response) => {
-    //the info we want is in the response
-    console.log('response', response);
-    this.getGallery();
-    
-  })
-  .catch((error) => {
-    alert('Something bad happening');
-    console.log('error', error);  
-  })
-    
-  }
+  axios({
+      method: 'POST',
+      url: '/gallery',
+      data: newImage
+    })
+    .then((response) => {
+      //the info we want is in the response
+      console.log('response', response);
+      this.getGallery();
 
-  deletePhoto = (id) => {
-    console.log('Deleting: ', id);
-    axios
+    })
+    .catch((error) => {
+      alert('Something bad happening');
+      console.log('error', error);
+    })
+} //end postImage
+
+//DELETE
+deletePhoto = (id) => {
+  console.log('Deleting: ', id);
+  axios
     .delete(`/gallery/${id}`)
     .then((response) => {
       console.log('Deleting photo');
       this.getGallery();
-      
+
     })
-}
+}//end deletePhoto
 
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="shimmer App-title">Gallery of my life</h1>
-          
+          <h1 className="App-title">Gallery of my life</h1>    
         </header>
         <GalleryForm postImage={this.postImage}/>
         <br/>
-
         <GalleryList image={this.state.galleryList} addLike={this.addLike} deletePhoto={this.deletePhoto}/>
       </div>
     );
-  }
+  } //end render
 }
 
 export default App;
