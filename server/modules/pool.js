@@ -1,8 +1,8 @@
 // Node Module that will connect to postgesql
 const pg = require('pg');
-const url = require('url');
+
 // Setup PG to connect to the database
-const Pool = pg.Pool (config);
+const Pool = pg.Pool;
 
 let config = {};
 
@@ -27,9 +27,12 @@ if (process.env.DATABASE_URL) {
       host: 'localhost',
       port: 5432,
       database: 'react_gallery', // CHANGE THIS LINE to match your local database name!
+      max: 10, 
+      idleTimeoutMillis: 30000
     };
   }
 
+const pool = new Pool (config);
 
 // Listener setup on the pool isn't required, 
 // but can be super handy for troubleshooting.
