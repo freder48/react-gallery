@@ -1,8 +1,9 @@
 CREATE TABLE "gallery" (
-    "id" SERIAL PRIMARY KEY,
-    "path" VARCHAR(1000) NOT NULL,
-    "description" VARCHAR (500) NOT NULL,
-    "likes" INTEGER DEFAULT 0
+  "id" SERIAL PRIMARY KEY,
+  "path" VARCHAR(1000) NOT NULL,
+  "alt" VARCHAR(400) NOT NULL, 
+  "description" VARCHAR (500) NOT NULL,
+  "likes" INTEGER DEFAULT 0
 );
 
 INSERT INTO gallery (path, alt, description, likes)
